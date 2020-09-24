@@ -8,7 +8,13 @@ const App = createApp({
             image: 'https://www.vuemastery.com/images/challenges/vmSocks-green.jpg',
             inStock: true,
             inventory: 10,
-            sale: true
+            sale: true,
+            details: ['50% - cotton', '30% - wool', '20% - polyester'],
+            variants: [
+                { id: 2544, color: 'green' },
+                { id: 2545, color: 'blue' }
+            ],
+            sizes: ['S', 'M', 'L', 'XS', 'XL']
         }
     }
 });

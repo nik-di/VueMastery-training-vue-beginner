@@ -1,4 +1,14 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue/dist/vue.esm-bundler.js'
 
-createApp(App).mount('#app')
+const App = createApp({
+    data() {
+        return {
+            product: 'Socks',
+            description: 'A pair of warm, fuzzy socks',
+            image: 'https://www.vuemastery.com/images/challenges/vmSocks-green.jpg',
+            inStock: true
+        }
+    }
+});
+
+window.App = App.mount('#app');

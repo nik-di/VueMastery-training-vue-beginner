@@ -6,7 +6,9 @@ const App = createApp({
             product: 'Socks',
             description: 'A pair of warm, fuzzy socks',
             image: 'https://www.vuemastery.com/images/challenges/vmSocks-green.jpg',
-            inStock: true
+            inStock: true,
+            inventory: 10,
+            sale: true
         }
     }
 });

@@ -22,10 +22,11 @@
         <img class="" :src="image" alt="Alt" />
       </div>
       <div class="product-info">
-        <h1>{{ product }}</h1>
+        <h1>{{ product }}<span class="sale" v-show="sale">Sale!</span></h1>
         <p>{{ description }}</p>
         <p v-if="inStock">In stock</p>
         <p v-else>Out of stock</p>
+        <p class="light-sale" v-show="inventory <= 10">Almost sold out! Buy faster!!!</p>
       </div>
     </div>
   </main>

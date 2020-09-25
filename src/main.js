@@ -8,7 +8,7 @@ const App = createApp({
             inStock: true,
             inventory: 10,
             sale: true,
-            image: '',
+            image: 'https://www.vuemastery.com/images/challenges/vmSocks-green.jpg',
             details: ['50% - cotton', '30% - wool', '20% - polyester'],
             variants: [
                 {

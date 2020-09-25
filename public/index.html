@@ -19,7 +19,13 @@
   <main id="app">
     <div class="product">
       <div class="product-image">
-        <img class="" :src="image" alt="Alt" />
+        <!-- 
+          Если я хочу добавить только имя класса то его нужно заключить в кавычки как: 'class-name',
+          а если параметр из данных экземпляра класса - то без кавычек. 
+          В итоге:  [ inStock ? 'class-name' : paramFromInstance ] 
+          В случае paramFromInstance - сам параметр со знаечнием должны быть в объекте данных. При вставке параметра, в DOM добавится его значение.
+        -->
+        <img :class="[inStock ? '' : 'out-of-stock']" :src="image" alt="Alt" />
       </div>
       <div class="product-info">
         <h1>{{ product }}<span class="sale" v-show="sale">Sale!</span></h1>
@@ -30,15 +36,17 @@
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
-        <div class="color-box-wrapper">
-          <div class="color-box" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+        <div class="color-circle-wrapper">
+          <div class="color-circle" v-for="variant in variants" :key="variant.id"
+            @mouseover="updateImage(variant.image)" :style="{ backgroundColor: variant.color }"></div>
         </div>
         <ul>
           <li v-for="size in sizes">{{ size }}</li>
         </ul>
-        <button class="button" @click="addToCart">Add to Cart</button>
+        <button :disabled="!inStock" :class="[!inStock ? 'disabledButton' : 'button']" @click="addToCart">Add to
+          Cart</button>
         <div></div>
-        <button class="button" @click="reset">Reset</button>
+        <button :disabled="!inStock" :class="[!inStock ? 'disabledButton' : 'button']" @click="reset">Reset</button>
       </div>
       <div class="cart">Cart: {{ cart }}</div>
     </div>

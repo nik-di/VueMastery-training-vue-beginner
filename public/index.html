@@ -31,12 +31,16 @@
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
         <div class="color-box-wrapper">
-          <div class="color-box" v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+          <div class="color-box" v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
         </div>
         <ul>
           <li v-for="size in sizes">{{ size }}</li>
         </ul>
+        <button class="button" @click="addToCart">Add to Cart</button>
+        <div></div>
+        <button class="button" @click="reset">Reset</button>
       </div>
+      <div class="cart">Cart: {{ cart }}</div>
     </div>
   </main>
   <footer class="footer"></footer>

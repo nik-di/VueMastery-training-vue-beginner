@@ -8,8 +8,20 @@ new Vue({
     el: '#app',
     data() {
         return {
-            cart: 0,
+            cart: [],
             parentPremiumInfo: true
+        }
+    },
+    methods: {
+        incrementCart(id) {
+            this.cart.push(id);
+        },
+        resetCart() {
+            this.cart.splice(0);
+        },
+        removeProduct(id) {
+            const searchedIndex = this.cart.indexOf(id);
+            this.cart.splice(searchedIndex, 1);
         }
     }
 });

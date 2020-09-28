@@ -17,9 +17,9 @@
   </noscript>
   <header class="nav-bar"></header>
   <main id="app">
-    <div class="cart">Cart: {{ cart }}</div>
+    <div class="cart">Cart: {{ cart.length }}</div>
     <!-- Стиль именования входных параметров: camelCase в JS, а kebab-case в HTML (если состоит из нескольких слов) -->
-    <product :component-premium-info="parentPremiumInfo"></product>
+    <product :component-premium-info="parentPremiumInfo" @add-to-cart="incrementCart" @reset="resetCart" @remove-from-cart="removeProduct"></product>
   </main>
   <footer class="footer"></footer>
   <!-- built files will be auto injected -->

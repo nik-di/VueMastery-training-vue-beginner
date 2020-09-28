@@ -13,7 +13,7 @@ export default Vue.component('product', {
     <div class="product">
 
       <product-img :bool="inStock" :image="image"></product-img>
-      
+
       <div class="product-info">
 
         <h1>{{ title }}<span class="sale" v-show="onSale">Sale!</span></h1>
@@ -36,6 +36,8 @@ export default Vue.component('product', {
         <product-button :clickHandler="addToCart" :booleanArg="inStock" text="Add to cart"></product-button>
 
         <product-button :clickHandler="reset" :booleanArg="inStock" text="Reset"></product-button>
+        
+        <product-button :clickHandler="removeProduct" :booleanArg="inStock" text="Remove this"></product-button>
 
       </div>
     </div>
@@ -60,7 +62,7 @@ export default Vue.component('product', {
                     id: 2545,
                     color: 'blue',
                     image: 'https://www.vuemastery.com/images/challenges/vmSocks-blue.jpg',
-                    quantity: 0,
+                    quantity: 1,
                     sale: false,
                     details: ['50% - cotton', '30% - wool', '20% - polyester'],
                     sizes: ['S', 'M', 'L', 'XS', 'XL']
@@ -70,10 +72,15 @@ export default Vue.component('product', {
     },
     methods: {
         addToCart() {
-            this.cart += 1;
+            const { id } = this.variants[this.selectedVariant];
+            this.$emit('add-to-cart', id);
         },
         reset() {
-            this.cart = 0;
+            this.$emit('reset');
+        },
+        removeProduct() {
+            const { id } = this.variants[this.selectedVariant];
+            this.$emit('remove-from-cart', id);
         },
         updateVariant(index) {
             this.selectedVariant = index;

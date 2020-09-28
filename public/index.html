@@ -28,18 +28,17 @@
         <img :class="[inStock ? '' : 'out-of-stock']" :src="image" alt="Alt" />
       </div>
       <div class="product-info">
-        <h1>{{ product }}<span class="sale" v-show="sale">Sale!</span></h1>
+        <h1>{{ title }}<span class="sale" v-show="onSale">Sale!</span></h1>
         <p>{{ description }}</p>
         <p v-if="inStock">In stock</p>
         <p v-else>Out of stock</p>
-        <p class="light-sale" v-show="inventory <= 10">Almost sold out! Buy faster!!!</p>
         <ul>
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
         <div class="color-circle-wrapper">
           <!-- Style Binding: ( :style="{ 'background-color' или backgroundColor без кавычек и в camelCase ... ) -->
-          <div class="color-circle" v-for="variant in variants" :key="variant.id"
-            @mouseover="updateImage(variant.image)" :style="{ 'background-color': variant.color }"></div>
+          <div class="color-circle" v-for="(variant, index) in variants" :key="variant.id"
+            @mouseover="updateVariant(index)" :style="{ 'background-color': variant.color }"></div>
         </div>
         <ul>
           <li v-for="size in sizes">{{ size }}</li>

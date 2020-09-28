@@ -17,39 +17,9 @@
   </noscript>
   <header class="nav-bar"></header>
   <main id="app">
-    <div class="product">
-      <div class="product-image">
-        <!-- 
-          Если я хочу добавить только имя класса то его нужно заключить в кавычки как: 'class-name',
-          а если параметр из данных экземпляра класса - то без кавычек. 
-          В итоге:  [ inStock ? 'class-name' : paramFromInstance ] 
-          В случае paramFromInstance - сам параметр со знаечнием должны быть в объекте данных. При вставке параметра, в DOM добавится его значение.
-        -->
-        <img :class="[inStock ? '' : 'out-of-stock']" :src="image" alt="Alt" />
-      </div>
-      <div class="product-info">
-        <h1>{{ title }}<span class="sale" v-show="onSale">Sale!</span></h1>
-        <p>{{ description }}</p>
-        <p v-if="inStock">In stock</p>
-        <p v-else>Out of stock</p>
-        <ul>
-          <li v-for="detail in details">{{ detail }}</li>
-        </ul>
-        <div class="color-circle-wrapper">
-          <!-- Style Binding: ( :style="{ 'background-color' или backgroundColor без кавычек и в camelCase ... ) -->
-          <div class="color-circle" v-for="(variant, index) in variants" :key="variant.id"
-            @mouseover="updateVariant(index)" :style="{ 'background-color': variant.color }"></div>
-        </div>
-        <ul>
-          <li v-for="size in sizes">{{ size }}</li>
-        </ul>
-        <button :disabled="!inStock" :class="[!inStock ? 'disabled-button' : 'button']" @click="addToCart">Add to
-          Cart</button>
-        <div></div>
-        <button :disabled="!inStock" :class="[!inStock ? 'disabled-button' : 'button']" @click="reset">Reset</button>
-      </div>
-      <div class="cart">Cart: {{ cart }}</div>
-    </div>
+    <div class="cart">Cart: {{ cart }}</div>
+    <!-- Стиль именования входных параметров: camelCase в JS, а kebab-case в HTML (если состоит из нескольких слов) -->
+    <product :component-premium-info="parentPremiumInfo"></product>
   </main>
   <footer class="footer"></footer>
   <!-- built files will be auto injected -->

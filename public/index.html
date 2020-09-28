@@ -37,16 +37,17 @@
           <li v-for="detail in details">{{ detail }}</li>
         </ul>
         <div class="color-circle-wrapper">
+          <!-- Style Binding: ( :style="{ 'background-color' или backgroundColor без кавычек и в camelCase ... ) -->
           <div class="color-circle" v-for="variant in variants" :key="variant.id"
-            @mouseover="updateImage(variant.image)" :style="{ backgroundColor: variant.color }"></div>
+            @mouseover="updateImage(variant.image)" :style="{ 'background-color': variant.color }"></div>
         </div>
         <ul>
           <li v-for="size in sizes">{{ size }}</li>
         </ul>
-        <button :disabled="!inStock" :class="[!inStock ? 'disabledButton' : 'button']" @click="addToCart">Add to
+        <button :disabled="!inStock" :class="[!inStock ? 'disabled-button' : 'button']" @click="addToCart">Add to
           Cart</button>
         <div></div>
-        <button :disabled="!inStock" :class="[!inStock ? 'disabledButton' : 'button']" @click="reset">Reset</button>
+        <button :disabled="!inStock" :class="[!inStock ? 'disabled-button' : 'button']" @click="reset">Reset</button>
       </div>
       <div class="cart">Cart: {{ cart }}</div>
     </div>

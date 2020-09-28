@@ -88,7 +88,7 @@ body {
     font-size: 14px;
   } 
   
-  .disabledButton {
+  .disabled-button {
     background-color: #d8d8d8;
     color: #000000;
     cursor: not-allowed;

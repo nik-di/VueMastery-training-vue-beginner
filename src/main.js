@@ -1,8 +1,10 @@
 import Vue from 'vue/dist/vue.esm.js';
-import './components/product';
-import './components/productOptions';
-import './components/button';
-import './components/image';
+import './components/Product/Product';
+import './components/ProductOptions/ProductOptions';
+import './components/Button/Button';
+import './components/Image/Image';
+import './components/Review-form/Review-form';
+import './components/Reviews-list/ReviewList';
 
 new Vue({
     el: '#app',

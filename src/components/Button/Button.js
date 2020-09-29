@@ -1,4 +1,5 @@
-import Vue from 'vue/dist/vue.esm.js'
+import Vue from 'vue/dist/vue.esm.js';
+import './button.css';
 
 export default Vue.component('product-button', {
     props: {
@@ -8,7 +9,7 @@ export default Vue.component('product-button', {
         },
         inStock: {
             type: Boolean,
-            required: true
+            required: false
         },
         text: {
             type: String,

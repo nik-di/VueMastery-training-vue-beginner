@@ -1,4 +1,5 @@
-import Vue from 'vue/dist/vue.esm.js'
+import Vue from 'vue/dist/vue.esm.js';
+import './image.css';
 
 export default Vue.component('product-img', {
     props: {

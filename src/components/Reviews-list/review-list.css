@@ -1,0 +1,16 @@
+.review-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #d8d8d8;
+  margin-top: 10px;  
+}
+
+.review-container > ul {
+  list-style: none;
+}
+
+blockquote {
+  font-style: italic;
+  font-weight: bold;
+}

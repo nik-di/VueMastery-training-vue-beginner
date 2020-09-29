@@ -1,4 +1,5 @@
-import Vue from 'vue/dist/vue.esm.js'
+import Vue from 'vue/dist/vue.esm.js';
+import './product.css';
 
 export default Vue.component('product', {
     // Стиль именования входных параметров: camelCase в JS, а kebab-case в HTML (если состоит из нескольких слов)
@@ -8,8 +9,9 @@ export default Vue.component('product', {
             required: true
         }
     },
+    template: 
     /*html*/
-    template: `
+    `
     <div class="product">
 
       <product-img :bool="inStock" :image="image"></product-img>
@@ -40,6 +42,10 @@ export default Vue.component('product', {
         <product-button :clickHandler="removeProduct" :inStock="inStock" text="Remove this"></product-button>
 
       </div>
+      <div>
+        <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+        <review-form @review-submitted="addReview" :inStockInfo="inStock"></review-form>
+      </div>
     </div>
     `,
     data() {
@@ -67,7 +73,8 @@ export default Vue.component('product', {
                     details: ['50% - cotton', '30% - wool', '20% - polyester'],
                     sizes: ['S', 'M', 'L', 'XS', 'XL']
                 }
-            ]
+            ],
+            reviews: []
         }
     },
     methods: {
@@ -84,6 +91,9 @@ export default Vue.component('product', {
         },
         updateVariant(index) {
             this.selectedVariant = index;
+        },
+        addReview(review) {
+            this.reviews.push(review);
         }
     },
     computed: {

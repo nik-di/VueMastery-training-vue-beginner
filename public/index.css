@@ -93,6 +93,10 @@ body {
     font-size: 14px;
   } 
   
+  button.red {
+    background-color: #ff3333;
+  } 
+
   .disabled-button {
     background-color: #d8d8d8;
     color: #000000;

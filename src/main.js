@@ -21,6 +21,9 @@ new Vue({
         },
         removeProduct(id) {
             const searchedIndex = this.cart.indexOf(id);
+            if (searchedIndex === -1) {
+                return;
+            }
             this.cart.splice(searchedIndex, 1);
         }
     }

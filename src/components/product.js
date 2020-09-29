@@ -33,11 +33,11 @@ export default Vue.component('product', {
 
         <product-list-info :info="sizes"></product-list-info>
         
-        <product-button :clickHandler="addToCart" :booleanArg="inStock" text="Add to cart"></product-button>
+        <product-button :clickHandler="addToCart" :in-stock="inStock" text="Add to cart"></product-button>
 
-        <product-button :clickHandler="reset" :booleanArg="inStock" text="Reset"></product-button>
+        <product-button :clickHandler="reset" :in-stock="inStock" className="red" text="Reset"></product-button>
         
-        <product-button :clickHandler="removeProduct" :booleanArg="inStock" text="Remove this"></product-button>
+        <product-button :clickHandler="removeProduct" :inStock="inStock" text="Remove this"></product-button>
 
       </div>
     </div>
@@ -62,7 +62,7 @@ export default Vue.component('product', {
                     id: 2545,
                     color: 'blue',
                     image: 'https://www.vuemastery.com/images/challenges/vmSocks-blue.jpg',
-                    quantity: 1,
+                    quantity: 0,
                     sale: false,
                     details: ['50% - cotton', '30% - wool', '20% - polyester'],
                     sizes: ['S', 'M', 'L', 'XS', 'XL']

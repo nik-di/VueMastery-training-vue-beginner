@@ -1,14 +1,32 @@
-import { createApp } from 'vue/dist/vue.esm-bundler.js'
+import Vue from 'vue/dist/vue.esm.js';
+import './components/Product/Product';
+import './components/ProductOptions/ProductOptions';
+import './components/Button/Button';
+import './components/Image/Image';
+import './components/Review-form/Review-form';
+import './components/Reviews-list/ReviewList';
 
-const App = createApp({
+new Vue({
+    el: '#app',
     data() {
         return {
-            product: 'Socks',
-            description: 'A pair of warm, fuzzy socks',
-            image: 'https://www.vuemastery.com/images/challenges/vmSocks-green.jpg',
-            inStock: true
+            cart: [],
+            parentPremiumInfo: true
+        }
+    },
+    methods: {
+        incrementCart(id) {
+            this.cart.push(id);
+        },
+        resetCart() {
+            this.cart.splice(0);
+        },
+        removeProduct(id) {
+            const searchedIndex = this.cart.indexOf(id);
+            if (searchedIndex === -1) {
+                return;
+            }
+            this.cart.splice(searchedIndex, 1);
         }
     }
 });
-
-window.App = App.mount('#app');

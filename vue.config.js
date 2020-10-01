@@ -1,5 +1,5 @@
 module.exports = {
-    publicPath: '/VueMastery-training-vue-beginner',
+    publicPath: process.env.NODE_ENV === 'production' ? '/VueMastery-training-vue-beginner' : '',
     devServer: {
         hot: true
     }

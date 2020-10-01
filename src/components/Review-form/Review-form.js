@@ -11,7 +11,11 @@ export default Vue.component('review-form', {
     template:
         /*html*/
         `<form class="review-form" @submit.prevent="onSubmit">
-        <h3>Leave a review</h3>
+        <ul class="error" v-show="errors.length">
+            <li v-for="error in errors">{{ error }}</li>
+        </ul>
+
+        <h3 v-show="errors.length === 0">Leave a review</h3>
         <label for="name">Name:</label>
         <input :disabled="!inStockInfo" id="name" v-model="name">
         
@@ -37,34 +41,37 @@ export default Vue.component('review-form', {
     </form>`,
     data() {
         return {
-            name: '',
-            review: '',
+            name: null,
+            review: null,
             rating: null,
-            recommended: ''
+            recommended: null,
+            errors: []
         };
     },
     methods: {
         onSubmit() {
-            if (this.name === '' ||
-                this.review === '' ||
-                this.rating === null ||
-                this.recommended === ''
-                ) {
-                alert('Review is incomplete. Please fill out every field.');
-                return;
-            }
-            const productReview = {
-                name: this.name,
-                review: this.review,
-                rating: this.rating,
-                recommended: this.recommended
-            };
+            this.validate();
+            if (this.name && this.review && this.rating && this.recommended) {
+                this.errors.length = 0;
+                const productReview = {
+                    name: this.name,
+                    review: this.review,
+                    rating: this.rating,
+                    recommended: this.recommended
+                };
 
-            this.$emit('review-submitted', productReview);
-            this.name = '';
-            this.review = '';
-            this.rating = null;
-            this.recommended = '';
+                this.$emit('review-submitted', productReview);
+                this.name = null;
+                this.review = null;
+                this.rating = null;
+                this.recommended = null;
+            }
+        },
+        validate() {
+            if (this.name === null) { this.errors.push('Please fill out "Name" field.') }
+            if (this.review === null) { this.errors.push('Please fill out "Review" field.') }
+            if (this.rating === null) { this.errors.push('Please fill out "Rating" field.') }
+            if (this.recommended === null) { this.errors.push('Please fill out "Recommended" field.') }
         }
     }
 });

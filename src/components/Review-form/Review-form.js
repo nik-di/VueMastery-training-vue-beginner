@@ -68,6 +68,7 @@ export default Vue.component('review-form', {
             }
         },
         validate() {
+            this.errors.length = 0;
             if (this.name === null) { this.errors.push('Please fill out "Name" field.') }
             if (this.review === null) { this.errors.push('Please fill out "Review" field.') }
             if (this.rating === null) { this.errors.push('Please fill out "Rating" field.') }
